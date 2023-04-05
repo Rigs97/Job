@@ -1,0 +1,5 @@
+def inverter(txt):
+  return txt[::-1]
+
+texto_invertido = input("Digite o que deseja inverter: ")
+print(inverter(texto_invertido))
