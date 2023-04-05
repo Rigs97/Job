@@ -1,0 +1,21 @@
+import json
+
+# Lendo os dados do faturamento mensal a partir do arquivo JSON
+with open('faturamento.json', 'r') as arquivo:
+    faturamento_mensal = json.load(arquivo)
+
+# Calculando o menor e o maior valor de faturamento ocorrido em um dia do mês
+menor_faturamento = min(faturamento_mensal)
+maior_faturamento = max(faturamento_mensal)
+
+# Calculando a média mensal de faturamento, excluindo os dias sem faturamento
+dias_com_faturamento = [faturamento for faturamento in faturamento_mensal if faturamento > 0]
+media_mensal = sum(dias_com_faturamento) / len(dias_com_faturamento)
+
+# Contando o número de dias em que o faturamento diário foi superior à média mensal
+dias_acima_da_media = sum(faturamento > media_mensal for faturamento in faturamento_mensal)
+
+# Imprimindo os resultados
+print("Menor valor de faturamento:", menor_faturamento)
+print("Maior valor de faturamento:", maior_faturamento)
+print("Número de dias com faturamento acima da média:", dias_acima_da_media)
